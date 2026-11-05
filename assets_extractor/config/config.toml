@@ -1,0 +1,16 @@
+[regexes]
+ipv4 = '(?<![\d.])(?:(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\.){3}(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(?![\d/]|\.\d)'
+domain = '(?<![\w@.-])(?:[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?\.)+(?:[A-Za-z]{2,63}|xn--[A-Za-z0-9-]{1,59})(?![\w-])'
+ipv4_cidr = '(?<![\d.])(?:(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\.){3}(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)/(?:3[0-2]|[12]?\d)(?!\d)'
+
+[llm]
+# prompt = """
+# You extract pentest mission assets from text.
+# Only report values that literally appear in the text; never invent any.
+# If nothing matches a category, return an empty list.\n
+# Output JSON matching this schema:
+# """
+#prompt_vl = """
+#"""
+model = "Qwen3VL-4B-Instruct-Q4_K_M.gguf"
+model_vl = "mmproj-Qwen3VL-4B-Instruct-Q8_0.gguf"

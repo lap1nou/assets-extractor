@@ -1,0 +1,56 @@
+[project]
+name = "assets-extractor"
+version = "1.0"
+description = "assets-extractor"
+authors = [{ name = "lap1nou" }]
+requires-python = ">=3.11,<4"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+]
+dependencies = [
+    "rich>=14.2.0,<15",
+    "markitdown[pptx,docx,xlsx,xls,pdf,outlook]==0.1.9",
+    "llama-cpp-python==0.3.36",
+    "pydantic==2.14.2",
+    "pytesseract==0.3.13",
+]
+
+[project.scripts]
+assets-extractor = "assets_extractor.__main__:main"
+
+[dependency-groups]
+dev = [
+    "pytest==8.3.4",
+    "pytest-asyncio==0.25.2",
+    "pytest-cov==6.1.1"
+]
+
+[tool.uv]
+default-groups = "all"
+exclude-newer = "2 weeks"
+
+[tool.uv.build-backend]
+module-name = "assets_extractor"
+module-root = ""
+
+[build-system]
+requires = ["uv_build>=0.10.7,<0.11.0"]
+build-backend = "uv_build"
+
+[tool.ruff.lint.extend-per-file-ignores]
+"assets_extractor/tests/*" = ["F811"]
+
+[tool.pytest.ini_options]
+addopts = "-v --cov=assets_extractor"
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+
+[tool.coverage.run]
+omit = [ "assets_extractor/tests/*", "assets_extractor/__main__.py" ]
+
+[tool.coverage.report]
+show_missing = true
