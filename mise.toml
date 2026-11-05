@@ -1,0 +1,16 @@
+[hooks]
+enter = "mise i -q && uv sync"
+
+[tools]
+ruff = "latest"
+uv = "latest"
+python = "3.13"
+
+[tasks]
+lint = "ruff format . && ruff check ."
+test = "uv run pytest"
+
+[tasks.debug]
+run = '''
+uv run python access-extractor.py
+'''
